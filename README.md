@@ -1,4 +1,4 @@
-# TAAC2026-
+# TAAC2026-初赛（已开源）
 研0小白 研究方向非推荐算法 记录与分享TAAC经验 打这个比赛是因为老板接了个腾讯项目被叫来参加 单打独斗。本人的成绩最开始从600+一路慢慢爬升到最后擦线进复赛。最后提交：val 0.8705，test：0.8235。如果你是小白，可以看看我的心得，顺便点点star！
 
 baseline很强，初期试探了一些方向例如正则、scaling up均无效，学习成本和试错成本都很大。初赛数据集只有100M，加上官方baseline没有完全固定seed，导致同一份代码run多次再test会出现不同的test auc，亲测浮动大概在千3左右（一次0.8194一次0.8167）。有尝试完全固定seed，但是掉了千1多，随放弃固定seed。因此很多改动掉分不一定是不work，有可能是代码浮动，也有可能是不适配现有模型，几乎每次提交都是抽卡，luck is all u need！
@@ -38,3 +38,4 @@ print训练集和测试集发现，测试集时间线是在训练集之后的，
 我的baseline val0.8620，test0.8123。我看到比赛期间有人讨论关于epoch提交问题，有选手消融发现提交非best val模型和非best logloss模型反而test更高（千2左右）。我认为和个人的模型有关，我最开始从baseline上面改，best val均在epoch6，实测epoch4、5比不过epoch6。当加入EMA改动之后best val出现在了epoch5，epoch4和epoch6也比不过epoch5。比赛期间test次数有限，所以当best val的epoch未发生偏移的时候，做一次消融就足够了，当best val的epoch发生偏移的时候，需要再做消融。
 
 还有一些尝试，例如从一开始就听说优化器可以上分，但是我无论是替换优化器、优化器调参还是像LLM一样layer层等不走优化器，都是掉分；还有将baseline的rankmixer替换成unimixer、tokenmixer、tokenformer也掉分，但有选手涨分，可能不适配我的模型。
+# TAAC2026-复赛（持续更新中）
